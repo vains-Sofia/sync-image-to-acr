@@ -1,0 +1,66 @@
+name: 🚀 同步单个镜像
+description: 同步一个 Docker 镜像到阿里云 ACR
+title: "sync:"
+labels: ["sync", "single-image"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你使用镜像同步服务！请填写以下信息来同步 Docker 镜像。
+        
+        > ⚠️ **重要提醒**: 请确保标题以 `sync:` 开头，后面跟镜像名称
+
+  - type: input
+    id: image-name
+    attributes:
+      label: 镜像名称
+      description: 请输入要同步的镜像名称（格式：repository:tag）
+      placeholder: "例如: nginx:latest"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: image-type
+    attributes:
+      label: 镜像类型
+      description: 选择镜像类型
+      options:
+        - 基础镜像 (如 alpine, ubuntu)
+        - Web 服务器 (如 nginx, apache)
+        - 数据库 (如 mysql, postgres, redis)
+        - 编程语言 (如 node, python, java)
+        - 开发工具 (如 git, docker)
+        - 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 优先级
+      description: 同步的紧急程度
+      options:
+        - 🔴 紧急 - 生产环境需要
+        - 🟡 普通 - 开发测试使用
+        - 🟢 低优先级 - 备用镜像
+      default: 1
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 使用说明
+      description: 简单说明这个镜像的用途（可选）
+      placeholder: "例如: 用于部署前端应用的 Nginx 服务器"
+
+#  - type: checkboxes
+#    id: terms
+#    attributes:
+#      label: 确认事项
+#      description: 请确认以下事项
+#      options:
+#        - label: 我确认这是一个公开可访问的 Docker Hub 镜像
+#          required: true
+#        - label: 我了解私有镜像无法同步
+#          required: true
+#        - label: "我确认标题格式正确（sync:镜像名称）"
+#          required: true

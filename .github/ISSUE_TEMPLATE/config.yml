@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 使用文档
+    url: https://github.com/vains-Sofia/sync-image-to-acr/blob/main/README.md
+    about: 查看详细的使用说明和配置指南
+  - name: ❓ 问题反馈
+    url: https://github.com/vains-Sofia/sync-image-to-acr/discussions
+    about: 遇到问题或有建议？在 Discussions 中讨论

@@ -1,0 +1,58 @@
+name: 📦 批量同步镜像
+description: 同步多个 Docker 镜像到阿里云 ACR
+title: "sync:"
+labels: ["sync", "batch"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        批量同步多个镜像，适合一次性同步相关的镜像组合。
+        
+        > ⚠️ **重要提醒**: 请确保标题以 `sync:` 开头，后面跟所有镜像名称（用空格分隔）
+
+  - type: textarea
+    id: image-list
+    attributes:
+      label: 镜像列表
+      description: 请输入要同步的镜像列表，每行一个或用空格分隔
+      placeholder: |
+        nginx:latest
+        alpine:3.18
+        redis:7-alpine
+        
+        或者用空格分隔：nginx:latest alpine:3.18 redis:7-alpine
+    validations:
+      required: true
+
+  - type: dropdown
+    id: batch-type
+    attributes:
+      label: 批量类型
+      description: 选择批量同步的类型
+      options:
+        - 🏗️ 项目依赖 - 特定项目需要的镜像
+        - 🔧 开发环境 - 开发环境常用镜像
+        - 🚀 生产环境 - 生产部署需要的镜像
+        - 📚 学习研究 - 学习或研究用途
+        - 🔄 定期更新 - 定期同步的镜像组
+      default: 0
+
+  - type: textarea
+    id: batch-description
+    attributes:
+      label: 批量说明
+      description: 说明这批镜像的用途或关联性
+      placeholder: "例如: 微服务项目的基础镜像组合，包含 Web 服务器、数据库和缓存"
+#
+#  - type: checkboxes
+#    id: batch-terms
+#    attributes:
+#      label: 确认事项
+#      description: 请确认以下事项
+#      options:
+#        - label: 我确认所有镜像都是公开可访问的
+#          required: true
+#        - label: 我了解失败的镜像会被跳过并标记
+#          required: true
+#        - label: 我确认标题格式正确
+#          required: true
